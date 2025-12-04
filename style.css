@@ -1,6 +1,6 @@
 /* CSS Variables for themes */
 :root {
-    --bg-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-color:linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
     --container-bg: white;
     --text-color: #333;
     --btn-bg: #28a745;
@@ -10,7 +10,8 @@
 }
 
 .dark-mode {
-    --bg-color: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --bg-color: linear-gradient(to right, #161515 0%, rgb(29, 27, 27) 100%);
+ background-blend-mode: multiply;
     --container-bg: #2c2c2c;
     --text-color: #e0e0e0;
     --btn-bg: #3498db;
@@ -38,7 +39,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     transition: background 0.3s ease;
 }
 
@@ -52,7 +53,7 @@ h1 {
     margin: 0 auto 20px;
     padding: 10px;
     background: var(--btn-bg);
-    color: white;
+    color: rgb(249, 244, 244);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -100,4 +101,168 @@ h1 {
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+/* Progress bar */
+.progress-section {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    background: var(--btn-bg);
+    width: 0%;
+    transition: width 0.5s ease; /* Animated progress */
+}
+
+/* Filter and export sections */
+.filter-section, .export-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.filter-btn, #export-btn, #import-btn, #undo-btn {
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--btn-bg);
+    color: white;
+}
+
+.filter-btn:hover, #export-btn:hover, #import-btn:hover, #undo-btn:hover {
+    background: #e9ecef;
+}
+
+#undo-btn {
+    background: #ffc107;
+    color: white;
+}
+
+/* Task list with animations */
+#task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    background: var(--task-bg);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease; /* Smooth hover and animation */
+    cursor: grab;
+}
+
+.task-item:hover {
+    transform: translateY(-2px); /* Lift on hover */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.dragging {
+    opacity: 0.5; /* Visual feedback during drag */
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+.task-item.overdue {
+    border-left: 5px solid #dc3545; /* Red border for overdue */
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+}
+
+.task-details {
+    font-size: 12px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #e0a800;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.slide-out {
+    animation: slideOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-100%); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .input-section {
+        flex-direction: column;
+    }
+    .filter-section, .export-section {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
